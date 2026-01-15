@@ -1,2 +1,10 @@
 # tor-proxy-service
-Tor-based proxy service using Docker for automated IP rotation and network isolation.
+
+## Ubuntu/Debian
+
+Install dependencies:
+
+```
+sudo apt update
+sudo apt install -y docker.io docker-compose tor privoxy python3 python3-pip
+```

@@ -1,0 +1,29 @@
+# Generated automatically
+
+version: '3'
+
+services:
+  tor-0:
+    container_name: tor-0
+    image: dockage/tor-privoxy:latest
+    ports:
+      - "25000:8118"
+    environment:
+      - IP_CHANGE_SECONDS=5
+    restart: always
+  tor-1:
+    container_name: tor-1
+    image: dockage/tor-privoxy:latest
+    ports:
+      - "25001:8118"
+    environment:
+      - IP_CHANGE_SECONDS=5
+    restart: always
+  tor-2:
+    container_name: tor-2
+    image: dockage/tor-privoxy:latest
+    ports:
+      - "25002:8118"
+    environment:
+      - IP_CHANGE_SECONDS=5
+    restart: always
