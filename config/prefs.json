@@ -1,0 +1,6 @@
+{
+  "proxy_count": 3,
+  "start_port": 25000,
+  "rotate_seconds": 60,
+  "gateway_port": 8080
+}

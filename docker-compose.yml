@@ -1,7 +1,4 @@
 # Generated automatically
-
-version: '3'
-
 services:
   tor-0:
     container_name: tor-0
@@ -9,7 +6,7 @@ services:
     ports:
       - "25000:8118"
     environment:
-      - IP_CHANGE_SECONDS=5
+      - IP_CHANGE_SECONDS=60
     restart: always
   tor-1:
     container_name: tor-1
@@ -17,7 +14,7 @@ services:
     ports:
       - "25001:8118"
     environment:
-      - IP_CHANGE_SECONDS=5
+      - IP_CHANGE_SECONDS=60
     restart: always
   tor-2:
     container_name: tor-2
@@ -25,5 +22,14 @@ services:
     ports:
       - "25002:8118"
     environment:
-      - IP_CHANGE_SECONDS=5
+      - IP_CHANGE_SECONDS=60
+    restart: always
+
+  proxy-gateway:
+    image: haproxy:latest
+    container_name: tor-gateway
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     restart: always

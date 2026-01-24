@@ -1,18 +1,16 @@
 # This code tests HTTP proxies running on localhost ports 25000 to 25009.
 import requests
-import pathlib, os, sys
-sys.path.append(str(pathlib.Path(__file__).parent.parent))
-from config import ( TEST_URL, TIMEOUT, PROXY_PROTOCOL, PROXY_HOST, PROXY_START_PORT, PROXY_COUNT ) 
-import pathlib
-    
-for port in range(PROXY_START_PORT, PROXY_START_PORT + PROXY_COUNT):
-    proxy = f"http://{PROXY_HOST}:{port}"
-    try:
+
+def check_proxies():
+    proxy = "http://127.0.0.1:8080"
+
+    for _ in range(5):
         r = requests.get(
             "http://httpbin.org/ip",
             proxies={"http": proxy, "https": proxy},
-            timeout=TIMEOUT
+            timeout=10
         )
-        print(f"[Ok] {proxy} → {r.text}")
-    except:
-        print(f"[Bad] {proxy}")
+        print(r.text)
+
+if __name__ == "__main__":
+    check_proxies()

@@ -45,7 +45,7 @@ printf "[*] Run the application now? (y/n): "
 read -r run_now
 if [[ "$run_now" == "y" || "$run_now" == "Y" ]]; then
   printf "[*] Starting the application...\n"
-  python3 build/main.py
+  sudo python3 build/main.py
 else
-  echo "[*] You can start the application later by activating the venv and running 'python3 build/main.py'."
+  echo "[*] You can start the application later running 'sudo python3 build/main.py'."
 fi
